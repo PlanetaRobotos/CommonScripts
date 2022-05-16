@@ -32,12 +32,12 @@ namespace _Project.Scripts.Infrastructure
 
         private void BindInitializer()
         {
-            Container.Bind<InitializeBehaviour>().FromInstance(_initializeBehaviour);
+            Container.Bind<InitializeBehaviour>().FromInstance(_initializeBehaviour).AsSingle();
         }
 
         private void BindTupleSateManager()
         {
-            Container.Bind<IStateManager>().To<TupleStateManager>();
+            Container.Bind<IStateManager>().To<TupleStateManager>().AsSingle();
         }
 
         private void BindGizmosService()

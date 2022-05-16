@@ -8,11 +8,14 @@ namespace _Project.Scripts.Services
     {
         private Queue<IInitialize> _initializes;
 
-        private void Start()
+        private void Update()
         {
-            foreach (IInitialize initializer in _initializes)
+            if (Input.GetKeyDown(KeyCode.K))
             {
-                initializer.Initialize();
+                foreach (IInitialize initializer in _initializes)
+                {
+                    initializer.Initialize();
+                }   
             }
         }
 
