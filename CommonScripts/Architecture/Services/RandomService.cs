@@ -43,10 +43,13 @@ namespace _Project.Scripts.Services
         public int GetValue(int min, int max) =>
             Random.Range(min, max);
 
-        public Vector3 GetRandomDirection()
+        public Vector3 GetRandomDirectionXZ()
         {
             return new Vector3(GetValue(-1f, 1f), 0f, GetValue(-1f, 1f)).normalized;
         }
+
+        public Vector3 GetRandomDirectionXY =>
+            new Vector3(GetValue(-1f, 1f), GetValue(-1f, 1f), 0f).normalized;
 
         public Vector2 GetRandomPointInsideCircle(float patrolRadius) =>
             Random.insideUnitCircle * patrolRadius;

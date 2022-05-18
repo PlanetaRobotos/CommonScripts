@@ -14,11 +14,11 @@ namespace _Project.Scripts.Infrastructure
     public class ServicesInstaller : MonoInstaller
     {
         [SerializeField] private GizmosService _gizmosService;
-        [SerializeField] private InitializeBehaviour _initializeBehaviour;
+        // [SerializeField] private InitializeBehaviour _initializeBehaviour;
 
         public override void InstallBindings()
         {
-            BindInitializer();
+            // BindInitializer();
             
             BindTupleSateManager();
             BindSaveLoadService();
@@ -30,10 +30,10 @@ namespace _Project.Scripts.Infrastructure
             BindGizmosService();
         }
 
-        private void BindInitializer()
-        {
-            Container.Bind<InitializeBehaviour>().FromInstance(_initializeBehaviour).AsSingle();
-        }
+        // private void BindInitializer()
+        // {
+        //     Container.Bind<InitializeBehaviour>().FromInstance(_initializeBehaviour).AsSingle();
+        // }
 
         private void BindTupleSateManager()
         {

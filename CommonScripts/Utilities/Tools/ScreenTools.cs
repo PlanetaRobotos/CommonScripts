@@ -26,19 +26,18 @@ public static class ScreenTools
         return !results.Where(result => result.gameObject.layer == 5)
             .Any(res => res.gameObject.TryGetComponent(out Joystick _));
     }*/
-    
+
     public static ScreenValues GetScreenValues()
     {
         Camera camera = Camera.main;
         if (camera is null) throw new Exception("Camera isn't find");
-            
+
         float height = camera.orthographicSize * 2.0f;
         float width = height * camera.aspect;
 
         return ScreenValues.CreateInstance(width, height);
-
     }
-    
+
     public struct ScreenValues
     {
         private ScreenValues(float width, float height)
@@ -51,7 +50,10 @@ public static class ScreenTools
 
         public float Height { get; }
 
-        public static ScreenValues CreateInstance(float width, float height) => 
+        public static ScreenValues CreateInstance(float width, float height) =>
             new ScreenValues(width, height);
+
+        public float HalfHeight => Height * 0.5f;
+        public float HalfWidth => Width * 0.5f;
     }
 }

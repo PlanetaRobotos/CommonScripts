@@ -5,18 +5,9 @@ using Zenject;
 
 namespace _Project.Scripts.CommonStuff.Mechanics
 {
-    public class Scaler : MonoBehaviour, IInitialize
+    public class Scaler : MonoBehaviour
     {
         [SerializeField] private ScaleType _scaleType;
-        
-        private InitializeBehaviour _initializeBehaviour;
-
-        [Inject]
-        private void Construct(InitializeBehaviour initializeBehaviour)
-        {
-            _initializeBehaviour = initializeBehaviour;
-            _initializeBehaviour.AddInitializer(this);
-        }
         
         public void Initialize()
         {
@@ -45,8 +36,8 @@ namespace _Project.Scripts.CommonStuff.Mechanics
                 case ScaleType.TilingWidth:
                     float height = screenValues.Width * delta;
                     transform.localScale = new Vector3(screenValues.Width, height, 0);
-                    Instantiate(gameObject, transform.position + Vector3.up * height / 2, Quaternion.identity);
-                    Instantiate(gameObject, transform.position - Vector3.up * height / 2, Quaternion.identity);
+                    Instantiate(gameObject, transform.position + Vector3.up * height, Quaternion.identity);
+                    Instantiate(gameObject, transform.position - Vector3.up * height, Quaternion.identity);
                     break;
                 case ScaleType.TilingHeight:
                     break;
