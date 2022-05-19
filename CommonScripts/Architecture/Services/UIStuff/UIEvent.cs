@@ -10,5 +10,6 @@ namespace _Project.Scripts.Architecture.Services.UIStuff
     public enum UIEventType
     {
         GameStartedAction,
+        GameFinishedAction,
     }
 }
