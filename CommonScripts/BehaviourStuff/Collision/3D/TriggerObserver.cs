@@ -2,7 +2,7 @@
 
 namespace _Project.Scripts.Architecture.Behaviours
 {
-    public class SimpleObserver : MonoBehaviour
+    public class TriggerObserver : MonoBehaviour
     {
         private ITriggable _parent;
 
