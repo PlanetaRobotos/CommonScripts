@@ -27,7 +27,7 @@ public static class ScreenTools
             .Any(res => res.gameObject.TryGetComponent(out Joystick _));
     }*/
 
-    public static ScreenValues GetScreenValues()
+    public static ScreenValues GetScreenValuesAspect()
     {
         Camera camera = Camera.main;
         if (camera is null) throw new Exception("Camera isn't find");

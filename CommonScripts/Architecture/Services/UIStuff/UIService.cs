@@ -13,13 +13,13 @@ namespace _Project.Scripts.Architecture.Services.UIStuff
     public class UIService : IUIService
     {
         private readonly List<WindowBase> _loadedWindows = new List<WindowBase>();
-        private readonly AssetService _assetService;
+        private readonly IAssetService _assetService;
         private readonly DiContainer _diContainer;
-        private readonly DataService _dataService;
+        private readonly IDataService _dataService;
 
         public Transform GameCanvas { get; private set; }
 
-        public UIService(AssetService assetService, DiContainer diContainer, DataService dataService)
+        public UIService(IAssetService assetService, DiContainer diContainer, IDataService dataService)
         {
             _dataService = dataService;
             _diContainer = diContainer;

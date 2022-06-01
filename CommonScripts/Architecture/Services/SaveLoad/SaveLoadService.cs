@@ -12,8 +12,10 @@ namespace _Project.Scripts.Architecture.Services.SaveLoadService
     {
         public Action OnDataUpdated { get; set; }
 
-        public PlayerData PlayerData { get; set; } = new PlayerData();
-        public GameConfig GameConfig { get; set; } = new GameConfig();
+        public PlayerData PlayerData { get; set; } = new();
+        public GameConfig GameConfig { get; set; } = new();
+
+        public BallsData BallsData { get; set; } = new();
 
         private readonly IWriterReader _writerReader;
         private readonly string _playerDataPath;

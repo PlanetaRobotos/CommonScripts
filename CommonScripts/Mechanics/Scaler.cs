@@ -16,7 +16,7 @@ namespace _Project.Scripts.CommonStuff.Mechanics
 
         private void Scale()
         {
-            var screenValues = ScreenTools.GetScreenValues();
+            var screenValues = ScreenTools.GetScreenValuesAspect();
             const float boardOffset = 0.1f;
             Vector3 scale = transform.localScale;
             float delta = scale.y / scale.x;

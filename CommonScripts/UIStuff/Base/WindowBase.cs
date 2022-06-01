@@ -19,9 +19,9 @@ namespace _Project.Scripts.UIStuff
         private float _openWindowDuration, _closeWindowDuration;
         private UISettings _uiSettings;
         protected IUIService _uiService;
-        protected DataService _dataService;
+        protected IDataService _dataService;
 
-        public void Construct(DataService dataService, IUIService uiService)
+        public void Construct(IDataService dataService, IUIService uiService)
         {
             _uiService = uiService;
             _dataService = dataService;

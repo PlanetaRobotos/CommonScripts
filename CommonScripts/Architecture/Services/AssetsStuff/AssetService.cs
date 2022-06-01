@@ -7,7 +7,19 @@ using UnityEngine;
 
 namespace _Project.Scripts.Services
 {
-    public class AssetService
+    public interface IAssetService
+    {
+        GameObject GetObjectByName(string path);
+        T GetObjectByName<T>(string path) where T : Object;
+        T GetObjectByType<T>(string path) where T : Object;
+        GameObject[] GetObjectsByType(string path);
+        GameObject GetObjectByIndex(string path, string body, int index);
+        T GetScriptableObjectByIndex<T>(string path, string body, int index) where T : ScriptableObject;
+        T Load<T>(string path) where T : ScriptableObject;
+        WindowBase LoadWindow(WindowType windowType);
+    }
+
+    public class AssetService : IAssetService
     {
         public GameObject GetObjectByName(string path) => 
             Resources.Load<GameObject>(path);   

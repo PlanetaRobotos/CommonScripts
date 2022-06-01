@@ -6,6 +6,12 @@ namespace _Project.Scripts.Infrastructure
     {
         public override void InstallBindings()
         {
+            BindBallFactory();
+        }
+
+        private void BindBallFactory()
+        {
+            Container.Bind<IBallFactory>().To<BallFactory>().AsSingle();
         }
     }
 }

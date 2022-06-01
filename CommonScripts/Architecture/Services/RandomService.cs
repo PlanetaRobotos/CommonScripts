@@ -67,5 +67,12 @@ namespace _Project.Scripts.Services
 
             return randomList;
         }
+
+        public Vector2 GetRandomScreenPoint(float bordersOffset)
+        {
+            var borders = ScreenTools.GetScreenValuesAspect();
+            return new Vector2(GetValue(-borders.HalfWidth + bordersOffset, borders.HalfWidth - bordersOffset),
+                GetValue(-borders.HalfHeight + bordersOffset, borders.HalfHeight - bordersOffset));
+        }
     }
 }

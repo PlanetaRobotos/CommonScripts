@@ -4,12 +4,12 @@ using Assets._Project.Scripts.Utilities.Constants;
 
 namespace _Project.Scripts.SettingsStuff
 {
-    public class DataService
+    public class DataService : IDataService
     {
         public WorldSettings WorldSettings { get; }
         public UISettings UISettings { get; }
 
-        public DataService(AssetService assetService)
+        public DataService(IAssetService assetService)
         {
             WorldSettings = assetService.GetObjectByType<WorldSettings>(AssetPath.GlobalSettingsPath);
             UISettings = assetService.GetObjectByType<UISettings>(AssetPath.GlobalSettingsPath);

@@ -63,12 +63,12 @@ namespace _Project.Scripts.Infrastructure
 
         private void BindAssetService()
         {
-            Container.Bind<AssetService>().AsSingle();
+            Container.Bind<IAssetService>().To<AssetService>().AsSingle();
         }
 
         private void BindDataService()
         {
-            Container.Bind<DataService>().AsSingle();
+            Container.Bind<IDataService>().To<DataService>().AsSingle();
         }
 
         private void BindPoolService()
