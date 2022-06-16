@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace submodules.CommonScripts.CommonScripts.Architecture.Services.InstantiateStuff
 {
-    public class InstantiateProvider : IInstantiate
+    public class InstantiateProvider : IInstantiator
     {
         public T Instantiate<T>(string path) where T : Object
         {
@@ -43,9 +43,9 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Instantia
             return prefab;
         }
 
-        public T Instantiate<T>(T template, Vector3 at, Vector3 scale) where T : Object
+        public T Instantiate<T>(GameObject template, Vector3 at, Vector3 scale) where T : Object
         {
-            var prefab = Object.Instantiate((GameObject)(Object)template, at, Quaternion.identity);
+            var prefab = Object.Instantiate(template, at, Quaternion.identity);
             prefab.transform.localScale = scale;
             return (T)(Object)prefab;
         }
@@ -56,9 +56,9 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Instantia
             return prefab;
         }
 
-        public T Instantiate<T>(T template, Vector3 at, Vector3 scale, Transform parent) where T : Object
+        public T Instantiate<T>(GameObject template, Vector3 at, Vector3 scale, Transform parent) where T : Object
         {
-            var prefab = Object.Instantiate((GameObject)(Object)template, at, Quaternion.identity, parent);
+            var prefab = Object.Instantiate(template, at, Quaternion.identity, parent);
             prefab.transform.localScale = scale;
             return (T)(Object)prefab;
         }

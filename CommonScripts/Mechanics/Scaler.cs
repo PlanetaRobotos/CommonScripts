@@ -1,6 +1,8 @@
+using _Project.Scripts.Mechanics;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.InstantiateStuff;
 using UnityEngine;
 using Zenject;
+using IInstantiator = submodules.CommonScripts.CommonScripts.Architecture.Services.InstantiateStuff.IInstantiator;
 
 namespace submodules.CommonScripts.CommonScripts.Mechanics
 {
@@ -9,7 +11,7 @@ namespace submodules.CommonScripts.CommonScripts.Mechanics
         [SerializeField] private ScaleType _scaleType;
         [SerializeField] private GameObject _gameFieldPrefab;
 
-        private IInstantiate _instantiateProvider;
+        private IInstantiator instantiatorProvider;
 
         public void Initialize()
         {
@@ -18,9 +20,9 @@ namespace submodules.CommonScripts.CommonScripts.Mechanics
         }
 
         [Inject]
-        private void Construct(IInstantiate instantiateProvider)
+        private void Construct(IInstantiator instantiatorProvider)
         {
-            _instantiateProvider = instantiateProvider;
+            this.instantiatorProvider = instantiatorProvider;
         }
 
         private void Scale()
@@ -46,24 +48,24 @@ namespace submodules.CommonScripts.CommonScripts.Mechanics
                 case ScaleType.TilingWidth:
                     float height = screenValues.Width * delta;
                     fieldScale = new Vector3(screenValues.Width, height, 0);
-                    _instantiateProvider.Instantiate(_gameFieldPrefab, Vector3.up * height,
+                    instantiatorProvider.Instantiate<GameField>(_gameFieldPrefab.gameObject, Vector3.up * height,
                         fieldScale,
                         transform);
-                    _instantiateProvider.Instantiate(_gameFieldPrefab.gameObject, Vector3.down * height,
+                    instantiatorProvider.Instantiate<GameField>(_gameFieldPrefab.gameObject, Vector3.down * height,
                         fieldScale,
                         transform);
                     break;
                 case ScaleType.TilingHeight:
                     float width = screenValues.Height * delta;
                     fieldScale = new Vector3(width, screenValues.Height, 0);
-                    _instantiateProvider.Instantiate(_gameFieldPrefab.gameObject, Vector3.left * width, fieldScale,
+                    instantiatorProvider.Instantiate<GameField>(_gameFieldPrefab.gameObject, Vector3.left * width, fieldScale,
                         transform);
-                    _instantiateProvider.Instantiate(_gameFieldPrefab.gameObject, Vector3.right * width, fieldScale,
+                    instantiatorProvider.Instantiate<GameField>(_gameFieldPrefab.gameObject, Vector3.right * width, fieldScale,
                         transform);
                     break;
             }
             
-            _instantiateProvider.Instantiate(_gameFieldPrefab.gameObject, Vector3.zero, fieldScale, transform);
+            instantiatorProvider.Instantiate<GameField>(_gameFieldPrefab.gameObject, Vector3.zero, fieldScale, transform);
         }
     }
 

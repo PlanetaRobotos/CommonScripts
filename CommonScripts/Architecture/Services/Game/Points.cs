@@ -3,18 +3,19 @@ using submodules.CommonScripts.CommonScripts.Architecture.Services.InstantiateSt
 using submodules.CommonScripts.CommonScripts.Utilities.Tools;
 using UnityEngine;
 using Zenject;
+using IInstantiator = submodules.CommonScripts.CommonScripts.Architecture.Services.InstantiateStuff.IInstantiator;
 
 namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Game
 {
     public class Points : MonoBehaviour
     {
         private InputBehaviour _inputBehaviour;
-        private IInstantiate _instantiateProvider;
+        private IInstantiator instantiatorProvider;
 
         [Inject]
-        private void Construct(InputBehaviour inputBehaviour, IInstantiate instantiateProvider)
+        private void Construct(InputBehaviour inputBehaviour, IInstantiator instantiatorProvider)
         {
-            _instantiateProvider = instantiateProvider;
+            this.instantiatorProvider = instantiatorProvider;
             _inputBehaviour = inputBehaviour;
         }
         

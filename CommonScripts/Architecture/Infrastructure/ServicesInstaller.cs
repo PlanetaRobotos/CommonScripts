@@ -10,6 +10,7 @@ using submodules.CommonScripts.CommonScripts.Architecture.Services.StateManagerS
 using submodules.CommonScripts.CommonScripts.Architecture.Services.UIStuff;
 using UnityEngine;
 using Zenject;
+using IInstantiator = submodules.CommonScripts.CommonScripts.Architecture.Services.InstantiateStuff.IInstantiator;
 
 namespace submodules.CommonScripts.CommonScripts.Architecture.Infrastructure
 {
@@ -76,7 +77,7 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Infrastructure
 
         private void BindInitializeProvider()
         {
-            Container.Bind<IInstantiate>().To<InstantiateProvider>().AsSingle();
+            Container.Bind<IInstantiator>().To<InstantiateProvider>().AsSingle();
         }
     }
 }
