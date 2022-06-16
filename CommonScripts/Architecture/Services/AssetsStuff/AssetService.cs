@@ -1,7 +1,7 @@
 using System.Linq;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.UIStuff;
+using submodules.CommonScripts.CommonScripts.Constants;
 using submodules.CommonScripts.CommonScripts.UIStuff.Base;
-using submodules.CommonScripts.CommonScripts.Utilities.Constants;
 using UnityEngine;
 
 namespace submodules.CommonScripts.CommonScripts.Architecture.Services.AssetsStuff

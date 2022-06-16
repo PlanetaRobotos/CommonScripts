@@ -2,6 +2,7 @@
 using submodules.CommonScripts.CommonScripts.Architecture.Services.AssetsStuff;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.DataStuff;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.GizmosStuff;
+using submodules.CommonScripts.CommonScripts.Architecture.Services.InstantiateStuff;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.Pool;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.SaveLoad;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.SaveLoad.IO;
@@ -28,7 +29,9 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Infrastructure
             BindDataService();
             BindUIService();
             BindGizmosService();
+            BindInitializeProvider();
         }
+
 
         // private void BindInitializer()
         // {
@@ -68,7 +71,12 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Infrastructure
 
         private void BindPoolService()
         {
-            Container.Bind<Services.Pool.IPoolService>().To<PoolService>().AsSingle();
+            Container.Bind<IPoolService>().To<PoolService>().AsSingle();
+        }
+
+        private void BindInitializeProvider()
+        {
+            Container.Bind<IInstantiate>().To<InstantiateProvider>().AsSingle();
         }
     }
 }

@@ -1,10 +1,10 @@
 using System.Collections;
-using _Project.Scripts.CommonStuff.Mechanics;
-using _Project.Scripts.CommonStuff.Mechanics.BallStuff;
+using _Project.Scripts.Mechanics;
+using _Project.Scripts.Mechanics.BallStuff;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.UIStuff;
+using submodules.CommonScripts.CommonScripts.Mechanics;
 using UnityEngine;
 using Zenject;
-using Scaler = submodules.CommonScripts.CommonScripts.Mechanics.Scaler;
 
 namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Game
 {
@@ -12,19 +12,20 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Game
     {
         [SerializeField] private Transform _gameCanvas;
 
-        [SerializeField] private Scaler _gameField;
-        [SerializeField] private Walls _walls;
+        [SerializeField] private GameFieldBehaviour _gameFieldBehaviour;
+        [SerializeField] private Points _points;
         [SerializeField] private Balls _balls;
-        
+
         [Inject] private IUIService _uiService;
 
         protected override void BindGame()
         {
             InitializeUI();
 
-            _gameField.Initialize();
-            _walls.Initialize();
+            _gameFieldBehaviour.Initialize();
+            _balls.Construct(_gameFieldBehaviour.GameField.GetComponent<GameFieldCollision>());
             _balls.Initialize();
+            _points.Initialize();
         }
 
         private void InitializeUI()

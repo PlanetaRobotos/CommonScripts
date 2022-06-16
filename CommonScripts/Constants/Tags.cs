@@ -1,5 +1,5 @@
 
-namespace submodules.CommonScripts.CommonScripts.Utilities.Constants
+namespace submodules.CommonScripts.CommonScripts.Constants
 {
     public static class Tags
     {

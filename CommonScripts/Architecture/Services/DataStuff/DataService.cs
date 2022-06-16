@@ -1,6 +1,6 @@
 using submodules.CommonScripts.CommonScripts.Architecture.Services.AssetsStuff;
+using submodules.CommonScripts.CommonScripts.Constants;
 using submodules.CommonScripts.CommonScripts.SettingsStuff.Global;
-using submodules.CommonScripts.CommonScripts.Utilities.Constants;
 
 namespace submodules.CommonScripts.CommonScripts.Architecture.Services.DataStuff
 {

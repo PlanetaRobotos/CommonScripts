@@ -6,7 +6,13 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Infrastructure
     {
         public override void InstallBindings()
         {
+            BindGameFiledFactory();
             BindBallFactory();
+        }
+
+        private void BindGameFiledFactory()
+        {
+            Container.Bind<GameFiledFactory>().AsSingle();
         }
 
         private void BindBallFactory()
