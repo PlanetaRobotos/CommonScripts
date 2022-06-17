@@ -1,3 +1,4 @@
+using _Project.Scripts.FactoriesStuff;
 using Zenject;
 
 namespace submodules.CommonScripts.CommonScripts.Architecture.Infrastructure
@@ -8,6 +9,8 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Infrastructure
         {
             BindGameFiledFactory();
             BindBallFactory();
+
+            Container.Bind<IWasherFactory>().To<WasherFactory>().AsSingle();
         }
 
         private void BindGameFiledFactory()

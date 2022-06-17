@@ -30,8 +30,8 @@ namespace submodules.CommonScripts.CommonScripts.Utilities.Tools
 
             return points;
         }
-        
-        public static Vector2[] GetPoints(float minDistance, int amount, Collider collider)
+
+        public static Vector2[] GetPoints(float minDistance, int amount, Collider2D collider)
         {
             var points = new Vector2[amount];
             points[0] = GetPoint(collider);
@@ -80,11 +80,11 @@ namespace submodules.CommonScripts.CommonScripts.Utilities.Tools
             var point = RandomUtils.GetRandomScreenPoint(150);
             return point;
         }
-        
-        public static Vector2 GetPoint(Collider collider)
+
+        public static Vector2 GetPoint(Collider2D collider)
         {
             var point = RandomUtils.GetRandomScreenPoint(150);
-            
+
             int counter = 0;
             while (!IsInside(collider, point))
             {
@@ -93,13 +93,11 @@ namespace submodules.CommonScripts.CommonScripts.Utilities.Tools
                 counter++;
                 point = GetPoint();
             }
+
             return point;
         }
-        
-        public static bool IsInside(Collider c, Vector3 point)
-        {
-            Vector3 closest = c.ClosestPoint(point);
-            return closest == point;
-        }
+
+        public static bool IsInside(Collider2D c, Vector3 point) => 
+            c.bounds.Contains(point);
     }
 }

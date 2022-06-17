@@ -2,7 +2,6 @@ using System.Collections;
 using _Project.Scripts.Mechanics;
 using _Project.Scripts.Mechanics.BallStuff;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.UIStuff;
-using submodules.CommonScripts.CommonScripts.Mechanics;
 using UnityEngine;
 using Zenject;
 
@@ -13,7 +12,7 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Game
         [SerializeField] private Transform _gameCanvas;
 
         [SerializeField] private GameFieldBehaviour _gameFieldBehaviour;
-        [SerializeField] private Points _points;
+        [SerializeField] private Washers _washers;
         [SerializeField] private Balls _balls;
 
         [Inject] private IUIService _uiService;
@@ -25,7 +24,7 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Game
             _gameFieldBehaviour.Initialize();
             _balls.Construct(_gameFieldBehaviour.GameField.GetComponent<GameFieldCollision>());
             _balls.Initialize();
-            _points.Initialize();
+            _washers.Initialize();
         }
 
         private void InitializeUI()
