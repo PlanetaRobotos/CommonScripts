@@ -3,51 +3,61 @@ using submodules.CommonScripts.CommonScripts.Architecture.Services.UIStuff;
 using submodules.CommonScripts.CommonScripts.Constants;
 using submodules.CommonScripts.CommonScripts.UIStuff.Base;
 using UnityEngine;
+using Zenject;
 
 namespace submodules.CommonScripts.CommonScripts.Architecture.Services.AssetsStuff
 {
     public interface IAssetService
     {
-        GameObject GetObjectByName(string path);
-        T GetObjectByName<T>(string path) where T : Object;
-        T GetObjectByType<T>(string path) where T : Object;
-        GameObject[] GetObjectsByType(string path);
-        GameObject GetObjectByIndex(string path, string body, int index);
-        T GetScriptableObjectByIndex<T>(string path, string body, int index) where T : ScriptableObject;
+        GameObject LoadObjectByName(string path);
+        T LoadObjectByName<T>(string path) where T : Object;
+        T LoadObjectByType<T>(string path) where T : Object;
+        GameObject[] LoadObjectsByType(string path);
+        GameObject LoadObjectByIndex(string path, string body, int index);
+        T LoadScriptableObjectByIndex<T>(string path, string body, int index) where T : ScriptableObject;
         T Load<T>(string path) where T : ScriptableObject;
         WindowBase LoadWindow(WindowType windowType);
     }
 
     public class AssetService : IAssetService
     {
-        public GameObject GetObjectByName(string path) => 
-            Resources.Load<GameObject>(path);   
+        private readonly DiContainer _diContainer;
+
+        public AssetService(DiContainer diContainer)
+        {
+            _diContainer = diContainer;
+        }
         
-        public T GetObjectByName<T>(string path) where T : Object
+        public GameObject LoadObjectByName(string path) =>
+            Resources.Load<GameObject>(path);
+
+        public T LoadObjectByName<T>(string path) where T : Object
         {
             return Resources.Load<T>(path);
         }
-        
-        public T GetObjectByType<T>(string path) where T : Object
+
+        public T LoadObjectByType<T>(string path) where T : Object
         {
             Object[] objects = Resources.LoadAll<Object>(path);
-            return (T) objects.FirstOrDefault(o => o.GetType() == typeof(T));
+            return (T)objects.FirstOrDefault(o => o.GetType() == typeof(T));
         }
-        
-        public GameObject[] GetObjectsByType(string path)
+
+        public GameObject[] LoadObjectsByType(string path)
         {
             GameObject[] objects = Resources.LoadAll<GameObject>(path);
             // return (GameObject[]) objects.Where(o => o.GetType() == typeof(T));
             return objects;
         }
 
-        public GameObject GetObjectByIndex(string path, string body, int index)
+        public GameObject LoadObjectByIndex(string path, string body, int index)
         {
-            string pathFull = $"{path}{body}_{index.ToString()}";
-            return Resources.Load<GameObject>(pathFull);
+            string pathFull = $"{path}/{body}_{index.ToString()}";
+            var obj = Resources.Load<GameObject>(pathFull);
+            // _diContainer.Inject(obj);
+            return obj;
         }
-        
-        public T GetScriptableObjectByIndex<T>(string path, string body, int index) where T : ScriptableObject
+
+        public T LoadScriptableObjectByIndex<T>(string path, string body, int index) where T : ScriptableObject
         {
             string pathFull = $"{path}/{body}_{index.ToString()}";
             return Resources.Load<T>(pathFull);
@@ -64,7 +74,7 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.AssetsStu
             return windows.First(window => window.GetWindowType() == windowType);
         }
     }
-    
+
     public class ResourcesKey
     {
         public string Key { get; }

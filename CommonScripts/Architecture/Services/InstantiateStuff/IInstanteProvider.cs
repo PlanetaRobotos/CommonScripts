@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace submodules.CommonScripts.CommonScripts.Architecture.Services.InstantiateStuff
 {
-    public interface IInstantiator
+    public interface IInstanteProvider
     {
         T Instantiate<T>(string path) where T : Object;
         T Instantiate<T>(string path, Vector3 at) where T : Object;

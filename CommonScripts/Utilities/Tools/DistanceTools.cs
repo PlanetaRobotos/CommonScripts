@@ -1,7 +1,5 @@
-using System.Linq;
 using submodules.CommonScripts.CommonScripts.Architecture.Services;
 using UnityEngine;
-using Zenject;
 
 namespace submodules.CommonScripts.CommonScripts.Utilities.Tools
 {

@@ -73,9 +73,4 @@ namespace submodules.CommonScripts.CommonScripts.Utilities.Tools
                 currentValue += Time.fixedDeltaTime;
         }
     }
-
-    public static class RandomTools
-    {
-    
-    }
 }

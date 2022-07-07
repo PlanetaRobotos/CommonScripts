@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Game
 {
-    public class BaseGame : MonoBehaviour
+    public abstract class BaseGame : MonoBehaviour
     {
         private void Start()
         {
@@ -23,7 +23,7 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Game
         protected void SetupGame()
         {
             BindGame();
-            // StartCoroutine(LoadProcess());
+            StartCoroutine(LoadProcess());
         }
     }
 }

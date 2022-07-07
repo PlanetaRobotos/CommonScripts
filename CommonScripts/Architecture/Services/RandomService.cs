@@ -22,6 +22,20 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services
             float randZ = GetValue(offset);
             return new Vector3(randX, randY, randZ);
         }
+        
+        public static Vector2 GetOffsetFor2Axis(MinMaxFloat xOffset, MinMaxFloat yOffset)
+        {
+            float randX = GetValue(xOffset);
+            float randY = GetValue(yOffset);
+            return new Vector2(randX, randY);
+        }
+        
+        public static Vector2 GetOffsetFor2Axis(MinMaxFloat offset)
+        {
+            float randX = GetValue(offset);
+            float randY = GetValue(offset);
+            return new Vector2(randX, randY);
+        }
 
         public static float GetValue(MinMaxFloat offset) =>
             Random.Range(offset.MinValue, offset.MaxValue);

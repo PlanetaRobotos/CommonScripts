@@ -70,7 +70,7 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.UIStuff
 
         public WindowBase[] LoadWindows()
         {
-            var objects = _assetService.GetObjectsByType(AssetPath.WindowsPath);
+            var objects = _assetService.LoadObjectsByType(AssetPath.WindowsPath);
             var windows = new WindowBase[objects.Length];
             for (var i = 0; i < objects.Length; i++)
             {

@@ -11,8 +11,8 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.DataStuff
 
         public DataService(IAssetService assetService)
         {
-            WorldSettings = assetService.GetObjectByType<WorldSettings>(AssetPath.GlobalSettingsPath);
-            UISettings = assetService.GetObjectByType<UISettings>(AssetPath.GlobalSettingsPath);
+            WorldSettings = assetService.LoadObjectByType<WorldSettings>(AssetPath.GlobalSettingsPath);
+            UISettings = assetService.LoadObjectByType<UISettings>(AssetPath.GlobalSettingsPath);
         }
     }
 }
