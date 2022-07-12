@@ -26,9 +26,14 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Game
         {
             InitializeUI();
             
+            _levels.CreateLevel();
+            
+            if (!_levels.TryGetLevel(out var level)) return;
+            Vector2 startPoint = level.GetStartPoint();
             _heroController.CreateHero();
 
-            _levels.CreateLevel();
+            if (_heroController.TryGetHero(out _)) 
+                _heroController.SetStartPosition(startPoint);
         }
 
         private void InitializeUI()

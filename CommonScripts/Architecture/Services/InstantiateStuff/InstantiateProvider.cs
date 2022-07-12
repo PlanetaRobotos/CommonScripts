@@ -76,9 +76,8 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Instantia
         private T DIInstantiate<T>(GameObject template, Vector3 at, Quaternion rot, Transform parent)
             where T : Object =>
             _diContainer.InstantiatePrefabForComponent<T>(template, at, rot, parent);
-        
-        private T DIInstantiate<T>(T template, Vector3 at, Quaternion rot, Transform parent)
-            where T : Object =>
+
+        private T DIInstantiate<T>(T template, Vector3 at, Quaternion rot, Transform parent) where T : Object =>
             _diContainer.InstantiatePrefabForComponent<T>(template, at, rot, parent);
     }
 }

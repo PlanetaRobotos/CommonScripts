@@ -45,7 +45,6 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.AssetsStu
         public GameObject[] LoadObjectsByType(string path)
         {
             GameObject[] objects = Resources.LoadAll<GameObject>(path);
-            // return (GameObject[]) objects.Where(o => o.GetType() == typeof(T));
             return objects;
         }
 
@@ -53,7 +52,6 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.AssetsStu
         {
             string pathFull = $"{path}/{body}_{index.ToString()}";
             var obj = Resources.Load<GameObject>(pathFull);
-            // _diContainer.Inject(obj);
             return obj;
         }
 

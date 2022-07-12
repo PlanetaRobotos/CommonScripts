@@ -7,7 +7,7 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services
 {
     public static class RandomUtils
     {
-        public static Vector3 GetOffsetFor3Axis(MinMaxFloat xOffset, MinMaxFloat yOffset, MinMaxFloat zOffset)
+        public static Vector3 Get2AxisValues(MinMaxFloat xOffset, MinMaxFloat yOffset, MinMaxFloat zOffset)
         {
             float randX = GetValue(xOffset);
             float randY = GetValue(yOffset);
@@ -15,7 +15,7 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services
             return new Vector3(randX, randY, randZ);
         }
 
-        public static Vector3 GetOffsetFor3Axis(MinMaxFloat offset)
+        public static Vector3 Get3AxisValues(MinMaxFloat offset)
         {
             float randX = GetValue(offset);
             float randY = GetValue(offset);
@@ -23,14 +23,14 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services
             return new Vector3(randX, randY, randZ);
         }
         
-        public static Vector2 GetOffsetFor2Axis(MinMaxFloat xOffset, MinMaxFloat yOffset)
+        public static Vector2 Get2AxisValues(MinMaxFloat xOffset, MinMaxFloat yOffset)
         {
             float randX = GetValue(xOffset);
             float randY = GetValue(yOffset);
             return new Vector2(randX, randY);
         }
         
-        public static Vector2 GetOffsetFor2Axis(MinMaxFloat offset)
+        public static Vector2 Get2AxisValues(MinMaxFloat offset)
         {
             float randX = GetValue(offset);
             float randY = GetValue(offset);
