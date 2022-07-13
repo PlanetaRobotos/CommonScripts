@@ -7,6 +7,8 @@ namespace submodules.CommonScripts.CommonScripts.BehaviourStuff.CameraStuff
     {
         [SerializeField] private CinemachineVirtualCamera _virtualCamera;
 
+        private Transform _target;
+
         public void SetTargetFollow(Transform target)
         {
             _virtualCamera.Follow = target;
