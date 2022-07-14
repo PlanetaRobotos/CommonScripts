@@ -1,3 +1,4 @@
+using _Project.Scripts;
 using DG.Tweening;
 using PlasticPipe.Certificates;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.SceneStuff;
@@ -14,6 +15,9 @@ namespace submodules.CommonScripts.CommonScripts.UIStuff
     {
         [SerializeField] private float _fadeDuration;
         [SerializeField] private float _delayBeforeFading;
+        
+        
+        [SerializeField, Header("Sub Behaviours")] private FadingIconAnimator fadingIconAnimator;
 
         private CanvasGroup _canvasGroup;
         private ISceneService _sceneService;
@@ -29,15 +33,22 @@ namespace submodules.CommonScripts.CommonScripts.UIStuff
             base.Initialize();
 
             _canvasGroup = GetComponent<CanvasGroup>();
+            
+            fadingIconAnimator.Initialize();
+            fadingIconAnimator.BeginFadeFlash();
 
-            DOVirtual.DelayedCall(_delayBeforeFading, Fade);
+            DOVirtual.DelayedCall(_delayBeforeFading, () =>
+            {
+                fadingIconAnimator.StopFadeFlash();
+                CloseAnimate(true);
+            });
         }
 
-        private void Fade()
+        protected override void CloseAnimate(bool isSmooth)
         {
-            _canvasGroup.DOFade(0f, _fadeDuration).SetEase(Ease.OutSine).onComplete += OnFadeComplete;
+            _canvasGroup.DOFade(0f, _fadeDuration).SetEase(Ease.OutSine).Play().onComplete += OnFadeComplete;
         }
-
+        
         private void OnFadeComplete()
         {
             _sceneService.GoToScene(Scenes.Game);
