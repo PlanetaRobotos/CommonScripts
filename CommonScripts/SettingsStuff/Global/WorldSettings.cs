@@ -5,11 +5,14 @@
     [CreateAssetMenu(fileName = "WorldSettings", menuName = "Settings/Global/WorldSettings")]
     public class WorldSettings : ScriptableObject
     {
-        [SerializeField] private int cachedTilesAmount = 15;
-        [SerializeField] private float maxDistanceBetweenHeroAndTile;
+        [SerializeField] private int _ballsAmount;
+        [SerializeField] private float _minStartDistanceBetweenBalls;
+        [SerializeField] private int _maxWashersAmount;
 
-        public int CachedTilesAmount => cachedTilesAmount;
+        public int BallsAmount => _ballsAmount;
 
-        public float MAXDistanceBetweenHeroAndTile => maxDistanceBetweenHeroAndTile;
+        public float MINStartDistanceBetweenBalls => _minStartDistanceBetweenBalls;
+
+        public int MaxWashersAmount => _maxWashersAmount;
     }
 }
