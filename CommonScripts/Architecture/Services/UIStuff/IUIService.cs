@@ -28,6 +28,7 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.UIStuff
         TapToPlayWindow,
         DonatWindow,
         FailWindow,
-        Pointer
+        Pointer,
+        Preloader
     }
 }

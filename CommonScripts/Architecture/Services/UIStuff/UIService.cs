@@ -44,7 +44,7 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.UIStuff
                 _loadedWindows.Add(window);
                 window.CloseWindow(false);
                 if (needOpen)
-                    window.OpenWindow(true);
+                    window.OpenWindow(isSmooth);
                 return window;
             }
 

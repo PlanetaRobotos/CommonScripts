@@ -1,11 +1,23 @@
 using System.Collections;
+using submodules.CommonScripts.CommonScripts.Architecture.Services.UIStuff;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Game
 {
-    public class MainMenu : BaseGame
+    public class Preloader : BaseGame
     {
+        [SerializeField] private Transform _gameCanvas;
+
+        private IUIService _uiService;
+
+        [Inject]
+        private void Construct(IUIService uiService)
+        {
+            _uiService = uiService;
+        }
+        
         private void Awake()
         {
             SetupGame();
@@ -13,6 +25,14 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Services.Game
  
         protected override void BindGame()
         {
+            InitializeUI();
+
+        }
+        
+        private void InitializeUI()
+        {
+            _uiService.Initialize(_gameCanvas);
+            _uiService.OpenWindow(WindowType.Preloader, true, false, true);
         }
  
         protected override IEnumerator LoadProcess()

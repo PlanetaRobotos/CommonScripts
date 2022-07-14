@@ -5,6 +5,7 @@ using submodules.CommonScripts.CommonScripts.Architecture.Services.InstantiateSt
 using submodules.CommonScripts.CommonScripts.Architecture.Services.Pool;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.SaveLoad;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.SaveLoad.IO;
+using submodules.CommonScripts.CommonScripts.Architecture.Services.SceneStuff;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.StateManagerStuff;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.UIStuff;
 using UnityEngine;
@@ -15,12 +16,9 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Infrastructure
     public class ServicesInstaller : MonoInstaller
     {
         [SerializeField] private GizmosService _gizmosService;
-        // [SerializeField] private InitializeBehaviour _initializeBehaviour;
 
         public override void InstallBindings()
         {
-            // BindInitializer();
-            
             BindTupleSateManager();
             BindSaveLoadService();
             BindPoolService();
@@ -29,13 +27,8 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Infrastructure
             BindUIService();
             BindGizmosService();
             BindInitializeProvider();
+            BindSceneService();
         }
-
-
-        // private void BindInitializer()
-        // {
-        //     Container.Bind<InitializeBehaviour>().FromInstance(_initializeBehaviour).AsSingle();
-        // }
 
         private void BindTupleSateManager()
         {
@@ -76,6 +69,11 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Infrastructure
         private void BindInitializeProvider()
         {
             Container.Bind<IInstantiateProvider>().To<InstantiateProvider>().AsSingle();
+        }
+
+        private void BindSceneService()
+        {
+            Container.Bind<ISceneService>().To<SceneService>().AsSingle();
         }
     }
 }
