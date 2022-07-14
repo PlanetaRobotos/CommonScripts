@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using submodules.CommonScripts.CommonScripts.Architecture.Services;
 using UnityEngine;
 
@@ -97,5 +99,10 @@ namespace submodules.CommonScripts.CommonScripts.Utilities.Tools
 
         public static bool IsInside(Collider2D c, Vector3 point) => 
             c.bounds.Contains(point);
+
+        public static bool IsAboveDistanceToOther(float minDistance, Vector3 checkPosition, IEnumerable<Vector3> points)
+        {
+            return points.All(point => !IsBelow(minDistance, checkPosition, point));
+        }
     }
 }

@@ -75,7 +75,7 @@ namespace submodules.CommonScripts.CommonScripts.Architecture.Infrastructure
 
         private void BindInitializeProvider()
         {
-            Container.Bind<IInstanteProvider>().To<InstantiateProvider>().AsSingle();
+            Container.Bind<IInstantiateProvider>().To<InstantiateProvider>().AsSingle();
         }
     }
 }

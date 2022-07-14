@@ -3,7 +3,7 @@ using Zenject;
 
 namespace submodules.CommonScripts.CommonScripts.Architecture.Services.InstantiateStuff
 {
-    public class InstantiateProvider : IInstanteProvider
+    public class InstantiateProvider : IInstantiateProvider
     {
         private readonly DiContainer _diContainer;
 
