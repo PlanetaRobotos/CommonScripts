@@ -1,5 +1,4 @@
 using DG.Tweening;
-using PlasticPipe.Certificates;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.SceneStuff;
 using submodules.CommonScripts.CommonScripts.Architecture.Services.UIStuff;
 using submodules.CommonScripts.CommonScripts.Constants;

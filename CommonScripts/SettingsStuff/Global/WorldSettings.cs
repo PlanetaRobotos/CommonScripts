@@ -5,14 +5,8 @@
     [CreateAssetMenu(fileName = "WorldSettings", menuName = "Settings/Global/WorldSettings")]
     public class WorldSettings : ScriptableObject
     {
-        [SerializeField] private int _ballsAmount;
-        [SerializeField] private float _minStartDistanceBetweenBalls;
-        [SerializeField] private int _maxWashersAmount;
+        [SerializeField] private float _ballOffset;
 
-        public int BallsAmount => _ballsAmount;
-
-        public float MINStartDistanceBetweenBalls => _minStartDistanceBetweenBalls;
-
-        public int MaxWashersAmount => _maxWashersAmount;
+        public float BallOffset => _ballOffset;
     }
 }
